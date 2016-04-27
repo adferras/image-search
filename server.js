@@ -20,7 +20,7 @@ mongo.MongoClient.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/
 		console.log('Connected to MongoDB on port 27017.');
 	}
 
-	db.createCollection("history", {
+	db.createCollection('history', {
 		capped: true,
 		size: 2097152,
 		max: 1000
