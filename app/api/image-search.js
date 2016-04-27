@@ -40,34 +40,28 @@ module.exports = function (app, db) {
     }
   }
 
-	function getHistory(db, res){
+  function getHistory(db, res){
     console.log("Getting history");
-		var history = db.collection('history');
-    history.findOne({"term" : "denver"}, function(err, result){
-			if(err) throw err;
-			if(result){
-				res.send("got results");
-			} else {
-				res.send({ "error" : "No record found" });
-			}
+    var cursor =db.collection('history').find( );
+    cursor.each(function(err, doc) {
+      if (doc !== null) {
+        console.log(doc);
+      }
     });
-
-
-		//res.send(history.find());//.sort({ timestamp: 1 }).limit( 10 );
   }
 
   /*
-	function findLink(link, db, res){
-		var links = db.collection('links');
-		links.findOne({ "short_url" : link }, function(err, result){
-			if(err) throw err;
-			if(result){
-				res.redirect(result.original_url);
-			} else {
-				res.send({ "error" : "No record found" });
-			}
-		});
-	}
+  var findRestaurants = function(db, callback) {
+     var cursor =db.collection('restaurants').find( );
+     cursor.each(function(err, doc) {
+           assert.equal(err, null);
+           if (doc != null) {
+                    console.dir(doc);
+                 } else {
+                          callback();
+                       }
+        });
+  };
   */
 
 	function saveQuery(term, db){
