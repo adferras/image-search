@@ -1,0 +1,55 @@
+/********* Fonts **********/
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'), url('../fonts/Roboto-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Roboto Medium'), local('Roboto-Medium'), url('../fonts/Roboto-Medium.ttf') format('truetype');
+}
+
+/****** Main Styling ******/
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid black;
+}
+
+.error {
+    color: red;
+}
+
+header {
+    color: black;
+    height: 56px;
+    margin: 0 0 14px 0;
+    text-align: left;
+    font-size: 18px;
+}
+
+p {
+    margin: 8px 0 0 0;
+}
+
+.code { 
+  font-size: 90%;
+  line-height: 1.2em;
+  font-family: Monaco, monospace;
+  color: red;
+  padding: 1em 1em;
+  background: #f4f4f4;
+}
+
+.container p {
+    text-align: center;
+    padding: 0;
+}
