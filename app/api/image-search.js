@@ -10,8 +10,9 @@ module.exports = function (app, db) {
       var page = req.query.offset || 0;
       var imgur = new Imgur(process.env.IMGUR_CLIENT_ID);
       var results = imgur.search(query, 'top', page).always(function(resp){
+        var listified = resp.map(listify);
         if(query !== 'favicon.ico'){
-          res.send(resp.map(listify));
+          res.send(listified);
           saveQuery(query, db);
         }
       });
