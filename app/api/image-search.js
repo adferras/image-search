@@ -40,14 +40,36 @@ module.exports = function (app, db) {
     }
   }
 
+  function simplify(record){
+    return {
+      "term": record.term,
+      "timestamp": record.timestamp
+    };
+  }
+
   function getHistory(db, res){
+    var jsonData = [];
     console.log("Getting history");
-    var cursor =db.collection('history').find( );
-    cursor.each(function(err, doc) {
-      if (doc !== null) {
-        console.log(doc);
-      }
+    var cursor = db.collection('history').find().toArray(function(err, result) {
+      console.log('result:');
+      console.log(result);
+      res.send(result);
+    
     });
+    //console.log(cursor[0]);
+    //console.log(JSON.stringify(cursor));
+    //cursor.each(function(err, doc) {
+    //  if (doc !== null) {
+    //    var simple = simplify(doc);
+    //    console.log(typeof simple);
+    //    console.log(simple);
+    //    console.log(JSON.parse(simple));
+    //    jsonData.push(simple);
+    //  }
+    //});
+    //console.log(jsonData);
+    //res.send('results');
+//        res.send(resp.map(listify));
   }
 
   /*
