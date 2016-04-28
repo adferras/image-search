@@ -48,48 +48,17 @@ module.exports = function (app, db) {
   }
 
   function getHistory(db, res){
-    var jsonData = [];
-    console.log("Getting history");
-    var cursor = db.collection('history').find().toArray(function(err, result) {
-      console.log('result:');
+    var cursor = db.collection('history').find({}, {term: 1, timestamp: 1, _id: 0}).toArray(function(err, result) {
       console.log(result);
-      res.send(result);
-    
+      var formatted = result.map(simplify);
+      res.send(formatted);
     });
-    //console.log(cursor[0]);
-    //console.log(JSON.stringify(cursor));
-    //cursor.each(function(err, doc) {
-    //  if (doc !== null) {
-    //    var simple = simplify(doc);
-    //    console.log(typeof simple);
-    //    console.log(simple);
-    //    console.log(JSON.parse(simple));
-    //    jsonData.push(simple);
-    //  }
-    //});
-    //console.log(jsonData);
-    //res.send('results');
-//        res.send(resp.map(listify));
   }
-
-  /*
-  var findRestaurants = function(db, callback) {
-     var cursor =db.collection('restaurants').find( );
-     cursor.each(function(err, doc) {
-           assert.equal(err, null);
-           if (doc != null) {
-                    console.dir(doc);
-                 } else {
-                          callback();
-                       }
-        });
-  };
-  */
 
 	function saveQuery(term, db){
     console.log("Saving query");
 		var history = db.collection('history');
-		history.save({ term: term, timestamp: Date.now() }, function(err, result){
+		history.save({ term: term, timestamp: new Date() }, function(err, result){
 			if(err) throw err;
 			console.log('Saved: ' + term);
 		});
