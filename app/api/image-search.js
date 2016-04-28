@@ -21,7 +21,7 @@ module.exports = function (app, db) {
     });
 
   function getHistory(db, res){
-    var cursor = db.collection('history').find({}, {term: 1, timestamp: 1, _id: 0}).sort({ timestamp: -1 }).toArray(function(err, result) {
+    var cursor = db.collection('history').find({}, {term: 1, timestamp: 1, _id: 0}).sort({ timestamp: -1 }).limit(10).toArray(function(err, result) {
       var formatted = result.map(simplify);
       res.send(formatted);
     });
