@@ -11,8 +11,8 @@ module.exports = function (app, db) {
       var imgur = new Imgur(process.env.IMGUR_CLIENT_ID);
       var results = imgur.search(query, 'top', page).always(function(resp){
         if(query !== 'favicon.ico'){
-          saveQuery(query, db);
           res.send(resp.map(listify));
+          saveQuery(query, db);
         }
       });
     });
