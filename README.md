@@ -1,6 +1,6 @@
 # Image Search
 
-This has been created as an assignment from [freecodecamp](http://www.freecodecamp.com)
+This has been created to fulfill the `Image Search Abstraction Layer` assignment from [freecodecamp](http://www.freecodecamp.com)
 
 This app has been deployed to the following locations:
 [Heroku](http://image-search-1690.herokuapp.com)
@@ -16,3 +16,6 @@ https://image-search-1690.herokuapp.com/api/imagesearch/denver%20broncos?offset=
 ```
 
 ## Example Output:
+```
+[{"url":"http://i.imgur.com/BMSb8fA.jpg","snippet":"Wes Welker, of the Denver Broncos, correctly picked the Kentucky Derby winner. As he left he handed out $100 bills like candy.","thumbnail":"http://i.imgur.com/BMSb8fAs.jpg","context":"http://imgur.com/gallery/BMSb8fA"}]
+```
